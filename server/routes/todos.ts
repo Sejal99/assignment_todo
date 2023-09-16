@@ -38,7 +38,7 @@ router.patch('/:id', async (req,res)=> {
         const {id}= req.params;
         const todoIndex= TODOS.findIndex((todo)=> todo.id === Number(id));
         if (todoIndex > -1) {
-            const updatedCourse = { ...TODOS[todoIndex], ...req.body };//So, the result is a new object (updatedCourse) that contains all the properties from the original course object and any additional properties or updates from the request body. This is often used in web applications when you want to update an object with new data without modifying the original objects.
+            const updatedCourse = { ...TODOS[todoIndex], ...req.body };
             TODOS[todoIndex] = updatedCourse;
             res.json({ message: 'Todo updated successfully' });
           } else {
@@ -46,14 +46,14 @@ router.patch('/:id', async (req,res)=> {
           }
         }
     catch(err){
-        res.status(403).json(err)
+        res.status(403).json(err) // throw error
     }
 })
 
 router.delete('/:id', async (req,res)=> {
     try{
         const {id}= req.params;
-        // const todoIndex= TODOS.findIndex((todo)=> todo.id === Number(id));
+    
         const TodosAfterDeletion= TODOS.filter((todo)=> todo.id != Number(id));
         TODOS= TodosAfterDeletion;
         res.json({message:"Todo deleted successfully"});
