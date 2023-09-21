@@ -31,7 +31,7 @@ router.get('/', async (req, res)=> {
         res.status(403).json(err)
     }
 })
-
+//patch route
 router.patch('/:id', async (req,res)=> {
     try{
 
